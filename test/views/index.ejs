@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Muggler test</title>
+</head>
+<body>
+<h2>Upload form</h2>
+<form action="/" method="POST" enctype="multipart/form-data">
+	<input type="file" name="fup" required>
+	<input type="text" name="sometext" required>
+	<input type="submit" value="Upload">
+</form>
+<h2>Files list</h2>
+<ol>
+	<% files.forEach(file => { %>
+		<li>
+			<%= file.name %> | <%= file.mimeType %> | <%= file.id %>
+			<form action="/delete/<%= file.id%>" method="POST">
+				<button>Delete</button>
+			</form>
+		</li>
+	<% }) %>
+</ol>
+</body>
+</html>
